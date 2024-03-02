@@ -4,19 +4,29 @@ import Controller.Interface.iGetView;
 import Model.Domain.Student;
 import java.util.List;
 import java.util.Scanner;
-
-
+/**
+ * Класс ViewClass реализует интерфейс iGetView для взаимодействия с пользователем.
+ */
 public class ViewClass implements iGetView {
 
-    public void printAllStudent(List<Student> students) { // Вывод всех студентов
+    /**
+     * Выводит список всех студентов.
+     * @param students Список студентов для вывода.
+     */
+    public void printAllStudent(List<Student> students) {
         System.out.println("-----Список Студентов-----");
-        for (Student s : students) {
-            System.out.println(s);
+        for (Student student : students) {
+            System.out.println(student);
         }
         System.out.println("--------------------------");
     }
 
-    public String prompt(String msg) { // Получение команды
+    /**
+     * Запрашивает команду у пользователя.
+     * @param msg Сообщение с запросом команды.
+     * @return Введенная пользователем команда.
+     */
+    public String prompt(String msg) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(msg);
         return scanner.next();
