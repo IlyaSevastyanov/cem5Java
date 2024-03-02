@@ -14,11 +14,11 @@ public class ViewClass implements iGetView {
      * @param students Список студентов для вывода.
      */
     public void printAllStudent(List<Student> students) {
-        System.out.println("-----Список Студентов-----");
+        System.out.println("---------------Список Студентов---------------");
         for (Student student : students) {
             System.out.println(student);
         }
-        System.out.println("--------------------------");
+        System.out.println("----------------------------------------------------");
     }
 
     /**
