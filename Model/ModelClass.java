@@ -7,7 +7,7 @@ import Model.Domain.*;
  * Класс ModelClass реализует интерфейс iGetModel для работы с данными студентов в памяти.
  */
 public class ModelClass implements iGetModel {
-    private List<Student> students; // Список студентов
+    private final List<Student> students; // Список студентов
 
     /**
      * Конструктор класса, инициализирующий список студентов.

@@ -3,6 +3,7 @@ package Controller;
 import Controller.Interface.iGetModel;
 import Controller.Interface.iGetView;
 import Model.Domain.Student;
+
 import java.util.*;
 
 /**
@@ -17,16 +18,18 @@ public class Controller {
 
     /**
      * Конструктор для инициализации Controller с ссылками на классы Model и View.
+     *
      * @param modelClass Класс Model, реализующий интерфейс iGetModel.
-     * @param viewClass Класс View, реализующий интерфейс iGetView.
+     * @param viewClass  Класс View, реализующий интерфейс iGetView.
      */
-    public Controller(iGetModel modelClass, iGetView viewClass ) {
+    public Controller(iGetModel modelClass, iGetView viewClass) {
         this.modelClass = modelClass;
         this.viewClass = viewClass;
     }
 
     /**
      * Проверяет, содержит ли список студентов какие-либо элементы.
+     *
      * @param students Список студентов для проверки.
      * @return true, если список не пустой, false в противном случае.
      */
@@ -34,16 +37,17 @@ public class Controller {
         if (students.size() > 0) return true;
         return false;
     }
+
     /**
      * Обновляет представление с последними данными о студентах из модели.
      * Вызывается без конкретной команды.
      */
     public void update() { // Запуск без Command
-
-        students = modelClass.getAllStudent();
         if (testData(students)) viewClass.printAllStudent(modelClass.getAllStudent());
         else System.out.println("Список пуст!");
+        //MVP
     }
+
     /**
      * Запускает контроллер для обработки команд пользователя.
      * Вызывается с вводом на основе команд.
@@ -52,7 +56,7 @@ public class Controller {
         Command com = Command.NONE;
         boolean getNewIteration = true;
         while (getNewIteration) {
-            String command = viewClass.prompt("Введи команду: ");
+            String command = viewClass.prompt("Введите команду: ");
             com = Command.valueOf(command.toUpperCase());
             switch (com) {
                 case EXIT:
@@ -67,7 +71,7 @@ public class Controller {
                     int number = scanner.nextInt();
                     try {
                         modelClass.removeFromList(number);
-                    } catch(ArrayIndexOutOfBoundsException e) {
+                    } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("Такого студента нет в списке!");
                     }
             }
